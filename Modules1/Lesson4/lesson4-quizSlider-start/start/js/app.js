@@ -12,6 +12,7 @@ Write your code in the attachEventListeners() function defintion, which starts o
 	 */
 	var line = document.querySelector('#line');
 
+
 	/**
 	 * Keeps track of touches and determines where the toggle should be on the slider.
 	 * @param {DOM node} toggle - The actual toggle that will be moving.
@@ -87,6 +88,17 @@ Write your code in the attachEventListeners() function defintion, which starts o
 	}
 
 	function attachEventListeners() {
+
+		toggle.addEventListener('mousedown', function(x){this.sliding =  true;}, true);
+		toggle.addEventListener('mousemove', function(x){
+			if(this.sliding) {
+			 toggleTracker.addMovement(x.clientX);
+			 slide();
+
+			}
+		}, true);
+
+
 		/*
 		The idea is:
 			1) On start, set flag that toggle has started sliding (see the DOMContentLoaded event
